@@ -6,13 +6,18 @@ const API = process.env.REACT_APP_API_URL;
 
 function App() {
   const [contacts, setContacts] = useState([]);
-
   const fetchContacts = async () => {
     try {
       const res = await axios.get(API);
-      setContacts(res.data);
+
+      if (Array.isArray(res.data)) {
+        setContacts(res.data);
+      } else {
+        setContacts([]);
+      }
     } catch (err) {
       console.error("Error fetching contacts:", err);
+      setContacts([]);
     }
   };
 

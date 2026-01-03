@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
+const API = "https://contact-management-qbvz.onrender.com/api/contacts";
+
 
 function App() {
   const [contacts, setContacts] = useState([]);
 
   const fetchContacts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/contacts");
+      const res = await axios.get(API);
       setContacts(res.data);
     } catch (err) {
       console.error("Error fetching contacts:", err);
@@ -16,15 +18,26 @@ function App() {
   };
 
   useEffect(() => {
-    fetchContacts(); // 🔥 THIS IS REQUIRED
+    fetchContacts();
   }, []);
 
   return (
-    <div className="container mt-4">
-      <ContactForm refreshContacts={fetchContacts} />
-      <ContactList contacts={contacts} refreshContacts={fetchContacts} />
+    <div className="container-fluid mt-4">
+      <h1 className="text-center mb-4">Contact Management App</h1>
+
+      <div className="row">
+        {/* LEFT SIDE – FORM */}
+        <div className="col-lg-5 col-md-12 mb-4">
+          <ContactForm refreshContacts={fetchContacts} />
+        </div>
+
+        {/* RIGHT SIDE – LIST */}
+        <div className="col-lg-7 col-md-12">
+          <ContactList contacts={contacts} refreshContacts={fetchContacts} />
+        </div>
+      </div>
     </div>
   );
 }
-
+export default API;
 export default App;

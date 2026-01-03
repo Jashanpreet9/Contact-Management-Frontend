@@ -5,7 +5,7 @@ function ContactList({ contacts, refreshContacts }) {
     if (!window.confirm("Are you sure you want to delete this contact?"))
       return;
 
-    await axios.delete(`http://localhost:5000/api/contacts/${id}`);
+    await axios.delete(`${API}/${id}`);
     refreshContacts();
   };
 

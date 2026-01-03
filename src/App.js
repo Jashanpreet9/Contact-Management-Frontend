@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function App() {
   const [contacts, setContacts] = useState([]);
 
   const fetchContacts = async () => {
     const res = await axios.get(
-      "http://contact-management-qbvz.onrender.com/api/contacts"
+      `${process.env.REACT_APP_BACKEND_URL}/api/contacts`
     );
     setContacts(res.data);
   };

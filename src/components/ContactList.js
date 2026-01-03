@@ -1,5 +1,5 @@
 import axios from "axios";
-
+const API = process.env.REACT_APP_API_URL;
 function ContactList({ contacts, refreshContacts }) {
   const deleteContact = async (id) => {
     if (!window.confirm("Are you sure you want to delete this contact?"))

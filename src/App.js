@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
-const API = "https://contact-management-qbvz.onrender.com/api/contacts";
-
+const API = process.env.REACT_APP_API_URL;
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -39,5 +38,5 @@ function App() {
     </div>
   );
 }
-export default API;
+
 export default App;

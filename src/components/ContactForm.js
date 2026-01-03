@@ -3,6 +3,7 @@ import axios from "axios";
 import InputField from "./InputField";
 import TextAreaField from "./TextAreaField";
 import SuccessAlert from "./SuccessAlert";
+const API = process.env.REACT_APP_API_URL;
 
 const initialState = {
   name: "",
